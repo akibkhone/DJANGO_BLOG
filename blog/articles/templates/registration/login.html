@@ -1,0 +1,51 @@
+<!--this login page is only used for built in django login form (using )-->
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{%  block title %} Login {% endblock %}
+
+
+{% block style %}
+
+    <style>
+        .login_style{
+            width:500px;
+            margin:auto:
+          }
+    </style>
+
+{% endblock %}
+
+
+
+{% block body %}
+
+    <div class="container mt-4 login_style">
+        <h1>Login User</h1>
+
+        {% if form.errors %}
+            <p>Incorrect username or password</p>
+
+        {% else %}
+          <p> Use the following form for login</p>
+
+        {% endif %}
+
+
+        <form action="" method="post" novalidate>
+
+            {{form | crispy}}
+            {% csrf_token %}
+
+
+            <input type="hidden" name="name" value="{{next}}">
+            <input type="submit" value="Login" class="btn btn-success">
+
+        </form>
+    </div>
+
+
+
+
+{% endblock %}
